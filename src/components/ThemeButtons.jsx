@@ -15,7 +15,6 @@ function ThemeButtons() {
   const handleThemeLight = () => {
     setTheme(theme === 'dark' ? '' : '');
   };
-
   const handleThemeDark = () => {
     setTheme(theme === !'dark' ? 'dark' : 'dark');
   };

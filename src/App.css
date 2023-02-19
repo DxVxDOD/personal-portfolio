@@ -3,3 +3,53 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    .hover_underline_animation-dark {
+        display: inline-block;
+        position: relative;
+        color: #e4e4e7;
+    }
+      
+    .hover_underline_animation-dark::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #e4e4e7;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+    }
+      
+    .hover_underline_animation-dark:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+
+    .hover_underline_animation {
+        display: inline-block;
+        position: relative;
+        color: #18181b;
+    }
+      
+    .hover_underline_animation::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #18181b;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+    }
+      
+    .hover_underline_animation:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+}

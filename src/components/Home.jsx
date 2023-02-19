@@ -5,7 +5,7 @@ function Home() {
   return (
     <button
       type="button"
-      className="border-b-2 border-black"
+      className="hover_underline_animation dark:hover_underline_animation-dark"
     >
       Home
 
