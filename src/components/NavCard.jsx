@@ -3,6 +3,7 @@ import '../App.css';
 import Projects from './Projects';
 import Contact from './Contact';
 import Home from './Home';
+import AboutMe from './AboutMe';
 
 function NavCard() {
   return (
@@ -10,6 +11,7 @@ function NavCard() {
       <Home />
       <Projects />
       <Contact />
+      <AboutMe />
     </div>
   );
 }
