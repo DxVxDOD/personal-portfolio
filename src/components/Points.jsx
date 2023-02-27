@@ -9,43 +9,43 @@ function Points() {
   const bufferRef = useRef();
 
   let t = 0;
-  const f = 0.005;
+  const f = 0.008;
   const a = 4;
-  const graph = useCallback((x, z) => Math.sin(
-    f * (x ** 2 + (z * 8) * 8 + t),
+  const grapher = useCallback((x, z) => Math.sin(
+    f * (x ** 2 + (z * 2) * 4 + 2000 + t),
   ) * a, [t, a, f]);
 
-  const count = 250;
-  const sep = 0.25;
+  const count = 300;
+  const space = 0.2;
   const positions = useMemo(() => {
     const positionsArray = [];
 
     for (let xi = 0; xi < count; xi += 1) {
       for (let zi = 0; zi < count; zi += 1) {
-        const x = sep * (xi - count / 2);
-        const z = sep * (zi - count / 2);
-        const y = graph(x, z);
+        const x = space * (xi - count / 2);
+        const z = space * (zi - count / 2);
+        const y = grapher(x, z);
         positionsArray.push(x, y, z);
       }
     }
 
     return new Float32Array(positionsArray);
-  }, [count, sep, graph]);
+  }, [count, space, grapher]);
 
   useFrame(() => {
-    t += 0.5;
+    t += 0.4;
     const positionsBufferRef = bufferRef.current.array;
     let i = 0;
 
     for (let xi = 0; xi < count; xi += 1) {
       for (let zi = 0; zi < count; zi += 1) {
-        const x = sep * (xi - count / 2);
-        const z = sep * (zi - count / 2);
-        positionsBufferRef[i + 1] = graph(x, z);
+        const x = space * (xi - count / 2);
+        const z = space * (zi - count / 2);
+        positionsBufferRef[i + 1] = grapher(x, z);
         i += 3;
       }
     }
-    bufferRef.current.needsUpdate = true;
+    bufferRef.current.needsUpdate = false;
   });
 
   return (
@@ -64,10 +64,10 @@ function Points() {
       <pointsMaterial
         attach="material"
         map={svgTexture}
-        size={0.2}
+        size={0.25}
         sizeAttenuation
         transparent={false}
-        alphaTest={0.2}
+        alphaTest={0.5}
         opacity={1.0}
       />
     </points>

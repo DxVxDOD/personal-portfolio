@@ -5,7 +5,7 @@ import Points from './Points';
 function AnimationCanvas() {
   return (
     <Canvas
-      camera={{ position: [60, 20, 0], fov: 10 }}
+      camera={{ position: [60, 25, 0], fov: 10 }}
     >
       <Suspense fallback={null}>
         <Points />
