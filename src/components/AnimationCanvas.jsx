@@ -1,16 +1,17 @@
-import React, { Suspense } from 'react'
+import React, { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import Points from './Points';
 
-const AnimationCanvas = () => {
+function AnimationCanvas() {
   return (
-    <Canvas 
-    camera={{position: [100, 100, 10], fov: 15}} >
-      <Suspense fallback={null} >
+    <Canvas
+      camera={{ position: [60, 25, 0], fov: 10 }}
+    >
+      <Suspense fallback={null}>
         <Points />
       </Suspense>
     </Canvas>
-  )
+  );
 }
 
-export default AnimationCanvas
+export default AnimationCanvas;
